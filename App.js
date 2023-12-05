@@ -1,10 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+
+function Hello() {
+  return (
+    <View>
+      <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>
+        Welcome to MindSwipe!
+      </Text>
+    </View>
+  );
+}
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>
+        <Hello />
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +25,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#001F3F",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
 });
