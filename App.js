@@ -11,6 +11,8 @@ function Hello() {
   );
 }
 
+function CardSet(props) {}
+
 export default function App() {
   return (
     <View style={styles.container}>
