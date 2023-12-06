@@ -39,7 +39,14 @@ class Session {
   }
 }
 
+function GetCards() {
+  storage.getAllDataForKey("card").then((data) => {
+    console.log(data);
+  });
+}
+
 function Hello() {
+  GetCards();
   return (
     <View>
       <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>
@@ -49,12 +56,34 @@ function Hello() {
   );
 }
 
+function CreateButton() {
+  return (
+    <View
+      style={{
+        backgroundColor: "#FF6F61",
+        borderRadius: 5,
+        padding: 10,
+      }}
+    >
+      <Text
+        style={{
+          fontSize: 20,
+          color: "#F5F5F5",
+          fontWeight: "bold",
+          textAlign: "center",
+        }}
+      >
+        + Create new card set +
+      </Text>
+    </View>
+  );
+}
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>
-        <Hello />
-      </Text>
+      <Hello />
+      <CreateButton />
       <StatusBar style="auto" />
     </View>
   );
