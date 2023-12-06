@@ -1,6 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
+import Storage from "react-native-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const storage = new Storage({
+  size: 50,
+  storageBackend: AsyncStorage,
+  defaultExpires: null,
+  enableCache: true,
+});
+
 function Hello() {
   return (
     <View>
@@ -10,8 +20,6 @@ function Hello() {
     </View>
   );
 }
-
-function CardSet(props) {}
 
 export default function App() {
   return (
