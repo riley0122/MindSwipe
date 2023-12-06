@@ -7,6 +7,27 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+const Stack = createNativeStackNavigator();
+
+const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Editor"
+          component={EditorScreen}
+          options={{ headerShown: true }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
 const storage = new Storage({
   size: 50,
   storageBackend: AsyncStorage,
@@ -51,25 +72,25 @@ function GetCards() {
 function Hello() {
   GetCards();
   return (
-    <NavigationContainer>
-      <View>
-        <Text
-          style={{
-            fontSize: 20,
-            color: "white",
-            fontWeight: "bold",
-            marginBottom: 35,
-          }}
-        >
-          Welcome to MindSwipe!
-        </Text>
-      </View>
-    </NavigationContainer>
+    <View>
+      <Text
+        style={{
+          fontSize: 20,
+          color: "white",
+          fontWeight: "bold",
+          marginBottom: 35,
+        }}
+      >
+        Welcome to MindSwipe!
+      </Text>
+    </View>
   );
 }
 
-function CreateButton() {
-  const handlePress = () => {};
+function CreateButton({ navigation }) {
+  const handlePress = () => {
+    navigation.navigate("Editor");
+  };
 
   return (
     <TouchableOpacity onPress={handlePress}>
@@ -95,11 +116,20 @@ function CreateButton() {
   );
 }
 
-export default function App() {
+function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Hello />
-      <CreateButton />
+      <CreateButton navigation={navigation} />
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+function EditorScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Edit your card set</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -114,3 +144,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default MyStack;
