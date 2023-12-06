@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Storage from "react-native-storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -49,7 +49,14 @@ function Hello() {
   GetCards();
   return (
     <View>
-      <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>
+      <Text
+        style={{
+          fontSize: 20,
+          color: "white",
+          fontWeight: "bold",
+          marginBottom: 35,
+        }}
+      >
         Welcome to MindSwipe!
       </Text>
     </View>
@@ -57,25 +64,31 @@ function Hello() {
 }
 
 function CreateButton() {
+  const handlePress = () => {
+    prompt("With what name?");
+  };
+
   return (
-    <View
-      style={{
-        backgroundColor: "#FF6F61",
-        borderRadius: 5,
-        padding: 10,
-      }}
-    >
-      <Text
+    <TouchableOpacity onPress={handlePress}>
+      <View
         style={{
-          fontSize: 20,
-          color: "#F5F5F5",
-          fontWeight: "bold",
-          textAlign: "center",
+          backgroundColor: "#FF6F61",
+          borderRadius: 5,
+          padding: 10,
         }}
       >
-        + Create new card set +
-      </Text>
-    </View>
+        <Text
+          style={{
+            fontSize: 20,
+            color: "#F5F5F5",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          + Create new card set +
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
