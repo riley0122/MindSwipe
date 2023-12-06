@@ -11,6 +11,34 @@ const storage = new Storage({
   enableCache: true,
 });
 
+const SessionStorage = new Storage({
+  size: 150,
+  storageBackend: AsyncStorage,
+  defaultExpires: 500 * 3600 * 24, // 12 hours
+  enableCache: false,
+});
+
+class Card {
+  constructor() {
+    this.front;
+    this.back;
+    this.uid =
+      Date.now().toString(36) + Math.random().toString(36).substring(2);
+  }
+}
+
+class Session {
+  constructor() {
+    this.setID;
+    this.correct;
+    this.incorrect;
+  }
+
+  get rating() {
+    return (this.correct / this.correct + this.incorrect) * 100;
+  }
+}
+
 function Hello() {
   return (
     <View>
