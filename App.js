@@ -64,9 +64,7 @@ function Hello() {
 }
 
 function CreateButton() {
-  const handlePress = () => {
-    prompt("With what name?");
-  };
+  const handlePress = () => {};
 
   return (
     <TouchableOpacity onPress={handlePress}>
