@@ -16,12 +16,17 @@ const MyStack = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, title: "Home" }}
         />
         <Stack.Screen
           name="Editor"
           component={EditorScreen}
           options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="CardEditor"
+          component={CardEditorScreen}
+          options={{ headerShown: true, title: "Edit a card" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -116,6 +121,35 @@ function CreateButton({ navigation }) {
   );
 }
 
+function CreateCardButton({ navigation }) {
+  const handlePress = () => {
+    navigation.navigate("CardEditor");
+  };
+
+  return (
+    <TouchableOpacity onPress={handlePress}>
+      <View
+        style={{
+          backgroundColor: "#FF6F61",
+          borderRadius: 5,
+          padding: 10,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            color: "#F5F5F5",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          + Create new card +
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
+
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -126,11 +160,19 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function EditorScreen() {
+function EditorScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Edit your card set</Text>
-      <StatusBar style="auto" />
+      <CreateCardButton navigation={navigation} />
+      <StatusBar style="inverted" />
+    </View>
+  );
+}
+
+function CardEditorScreen() {
+  return (
+    <View style={styles.container}>
+      <StatusBar style="inverted" />
     </View>
   );
 }
