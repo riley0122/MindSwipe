@@ -5,6 +5,7 @@ import Storage from "react-native-storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const storage = new Storage({
   size: 50,
