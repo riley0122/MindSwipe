@@ -4,6 +4,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Storage from "react-native-storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { NavigationContainer } from "@react-navigation/native";
+
 const storage = new Storage({
   size: 50,
   storageBackend: AsyncStorage,
@@ -48,18 +50,20 @@ function GetCards() {
 function Hello() {
   GetCards();
   return (
-    <View>
-      <Text
-        style={{
-          fontSize: 20,
-          color: "white",
-          fontWeight: "bold",
-          marginBottom: 35,
-        }}
-      >
-        Welcome to MindSwipe!
-      </Text>
-    </View>
+    <NavigationContainer>
+      <View>
+        <Text
+          style={{
+            fontSize: 20,
+            color: "white",
+            fontWeight: "bold",
+            marginBottom: 35,
+          }}
+        >
+          Welcome to MindSwipe!
+        </Text>
+      </View>
+    </NavigationContainer>
   );
 }
 
